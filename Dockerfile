@@ -1,3 +1,5 @@
+FROM Alpine:3.7
+
 FROM ruby:2.4.2
 
 RUN apt-get update -yqq \
