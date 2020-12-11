@@ -1,4 +1,4 @@
-FROM alpine:2.6
+FROM alpine:3.9.2
 ENV BUILD_PACKAGES bash curl-dev ruby-dev build-base
 ENV RUBY_PACKAGES ruby ruby-io-console ruby-bundler
 # Update and install all of the required packages.
