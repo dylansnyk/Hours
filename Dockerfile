@@ -1,4 +1,4 @@
-FROM ruby:2.4.2-alpine
+FROM ruby:2.5.5-alpine
 
 RUN apt-get update -yqq \
   && apt-get install -yqq --no-install-recommends \
