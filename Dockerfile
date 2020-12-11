@@ -1,8 +1,4 @@
-FROM alpine:3.7
-RUN apk add --no-cache mysql-client
-ENTRYPOINT ["mysql"]
-
-FROM ruby:2.4.2
+FROM ruby:2.4.2-alpine
 
 RUN apt-get update -yqq \
   && apt-get install -yqq --no-install-recommends \
