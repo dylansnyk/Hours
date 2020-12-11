@@ -1,3 +1,7 @@
+FROM alpine:3.7
+RUN apk add --no-cache mysql-client
+ENTRYPOINT ["mysql"]
+
 FROM ruby:2.4.2
 
 RUN apt-get update -yqq \
@@ -15,7 +19,3 @@ RUN bundle install
 COPY . .
 
 CMD bundle exec unicorn -c ./config/unicorn.rb
-
-FROM Alpine:3.7
-RUN apk add --no-cache mysql-client
-ENTRYPOINT ["mysql"]
