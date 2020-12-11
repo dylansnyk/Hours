@@ -1,17 +1,16 @@
-FROM alpine-ruby:2.4.1
-
-RUN apt-get update -yqq \
-  && apt-get install -yqq --no-install-recommends \
-    postgresql-client \
-    nodejs \
-    qt5-default \
-    libqt5webkit5-dev \
-  && apt-get -q clean \
-  && rm -rf /var/lib/apt/lists
-
-WORKDIR /usr/src/app
-COPY Gemfile* ./
+FROM alpine:3.2
+ENV BUILD_PACKAGES bash curl-dev ruby-dev build-base
+ENV RUBY_PACKAGES ruby ruby-io-console ruby-bundler
+# Update and install all of the required packages.
+# At the end, remove the apk cache
+RUN apk update && \
+    apk upgrade && \
+    apk add $BUILD_PACKAGES && \
+    apk add $RUBY_PACKAGES && \
+    rm -rf /var/cache/apk/*
+RUN mkdir /usr/app
+WORKDIR /usr/app
+COPY Gemfile /usr/app/
+COPY Gemfile.lock /usr/app/
 RUN bundle install
-COPY . .
-
-CMD bundle exec unicorn -c ./config/unicorn.rb
+COPY . /usr/app
