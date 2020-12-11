@@ -1,4 +1,6 @@
 FROM Alpine:3.7
+RUN apk add --no-cache mysql-client
+ENTRYPOINT ["mysql"]
 
 FROM ruby:2.4.2
 
