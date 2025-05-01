@@ -68,7 +68,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "letter_opener"
   gem "pry-rails"
-  gem "rspec-rails", "~> 3.8"
+  gem "rspec-rails", "~> 8.0", ">= 8.0.0"
 end
 
 group :test do
